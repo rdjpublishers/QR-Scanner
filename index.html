@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ===== CANONICAL URL ENFORCEMENT =====
+       GitHub Pages serves /QR-Scanner/ and /QR-Scanner/index.html as
+       identical content with no way to set a server-side redirect.
+       This normalizes any index.html hit to the clean canonical URL
+       so Google stops seeing them as duplicate pages. -->
+  <script>
+    if (/\/index\.html$/i.test(window.location.pathname)) {
+      var cleanUrl = window.location.pathname.replace(/index\.html$/i, '') + window.location.search + window.location.hash;
+      window.location.replace(cleanUrl);
+    }
+  </script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5M1ZPJW29"></script>
 <script>
@@ -16,7 +27,7 @@
   <!-- ===== PRIMARY SEO META TAGS ===== -->
   <title>QR Scanner & Generator – Scan & Create QR Codes Free | RDJPublishers</title>
   <meta name="description" content="RDJ Publishers — free online QR code scanner & generator. Scan QR codes via camera or image, create custom QR codes for any URL or text. No app, no sign-up, works instantly in your browser." />
-  <meta name="keywords" content="<meta name="keywords" content="QR code scanner online, QR code generator free, scan QR code from image, scan QR code with camera, create QR code online, QR reader no app, free QR code tool, QR code scanner no download, QR code generator no sign up, custom QR code generator, URL to QR code, text to QR code, online QR scanner free, RDJ Publishers, rdjpublishers">" />
+  <meta name="keywords" content="QR code scanner online, QR code generator free, scan QR code from image, scan QR code with camera, create QR code online, QR reader no app, free QR code tool, QR code scanner no download, QR code generator no sign up, custom QR code generator, URL to QR code, text to QR code, online QR scanner free, RDJ Publishers, rdjpublishers" />
   <meta name="author" content="RDJPublishers" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://rdjpublishers.com/QR-Scanner/" />
@@ -31,7 +42,7 @@
   <meta property="og:description" content="Free online QR Code Scanner & Generator. Scan from camera or image, and create custom QR codes instantly. No app download needed." />
   <meta property="og:url" content="https://rdjpublishers.com/QR-Scanner/" />
   <meta property="og:site_name" content="RDJPublishers" />
-  <meta property="og:image" content="https://rdjpublishers.com/QR-Scanner/Logo.png">
+  <meta property="og:image" content="https://rdjpublishers.com/QR-Scanner/Logo.png" />
 
   <!-- ===== TWITTER CARD ===== -->
   <meta name="twitter:card" content="summary" />
