@@ -271,7 +271,7 @@
     main {
       flex-grow: 1;
       overflow-y: auto;
-      padding: calc(var(--header-h) + 1.25rem) 1rem calc(var(--footer-h) + var(--legal-footer-h) + 1rem);
+      padding: calc(var(--header-h) + 1.25rem) 1rem calc(var(--legal-footer-h) + 1rem);
       overscroll-behavior: contain;
     }
 
@@ -425,6 +425,86 @@
       background: var(--accent);
       color: #fff;
       border-color: var(--accent);
+    }
+
+    /* "Scan Again" action row, sits below the result card */
+    .scan-result-actions {
+      margin-top: 0.65rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .scan-again-btn {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      font-size: 0.92rem;
+    }
+    .scan-again-btn i { font-size: 0.95rem; }
+    .auto-reset-note {
+      margin-top: 0.45rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ===== HISTORY ITEM ACTIONS (copy + open) ===== */
+    .history-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .history-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-shrink: 0;
+    }
+    .history-item-copy,
+    .history-item-open {
+      width: 30px; height: 30px;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.12s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .history-item-copy:hover,
+    .history-item-open:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .history-item-copy:active,
+    .history-item-open:active { transform: scale(0.9); }
+    .history-item-copy.copied {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .history-item-content {
+      font-size: 0.9rem;
+      margin: 0.2rem 0 0;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .history-item-link {
+      color: var(--primary);
+      text-decoration: none;
+      display: inline;
+    }
+    .history-item-link:hover { text-decoration: underline; }
+    .history-item-link::after {
+      content: " \2197";
+      font-size: 0.8em;
+      opacity: 0.65;
     }
 
     /* ===== UPLOAD BOX ===== */
@@ -643,37 +723,7 @@
     .info-row a { color: var(--primary); text-decoration: none; }
     .info-row a:hover { text-decoration: underline; }
 
-    /* ===== FOOTER NAV ===== */
-    footer {
-      height: var(--footer-h);
-      background: linear-gradient(135deg, var(--primary) 0%, #0d47a1 100%);
-      color: #fff;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      position: fixed;
-      bottom: var(--legal-footer-h); left: 0; right: 0;
-      z-index: 1100;
-      user-select: none;
-      box-shadow: 0 -2px 12px rgba(26,115,232,0.2);
-    }
-    .footer-nav-item {
-      display: flex; flex-direction: column; align-items: center;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      cursor: pointer;
-      gap: 3px;
-      padding: 0 0.5rem;
-      transition: color var(--transition);
-      min-width: 56px;
-    }
-    .footer-nav-item i { font-size: 1.35rem; }
-    .footer-nav-item span { font-size: 0.68rem; font-weight: 500; }
-    .footer-nav-item.active,
-    .footer-nav-item:hover { color: #fff; }
-    .footer-nav-item.active i {
-      filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
-    }
+    /* ===== (bottom navigation removed — sidebar handles navigation) ===== */
 
     /* ===== LEGAL FOOTER (always visible at bottom) ===== */
     .legal-footer {
@@ -1087,24 +1137,7 @@
 
   </main>
 
-  <!-- Footer Navigation -->
-  <footer>
-    <a href="#" class="footer-nav-item active" data-section="scanner-section" aria-label="Scanner">
-      <i class="fas fa-qrcode"></i><span>Scan</span>
-    </a>
-    <a href="#" class="footer-nav-item" data-section="scan-from-image-section" aria-label="Scan from image">
-      <i class="fas fa-image"></i><span>Image</span>
-    </a>
-    <a href="#" class="footer-nav-item" data-section="generator-section" aria-label="Generate QR">
-      <i class="fas fa-wand-magic-sparkles"></i><span>Create</span>
-    </a>
-    <a href="#" class="footer-nav-item" data-section="history-section" aria-label="History">
-      <i class="fas fa-clock-rotate-left"></i><span>History</span>
-    </a>
-    <a href="#" class="footer-nav-item" data-section="settings-section" aria-label="Settings">
-      <i class="fas fa-sliders"></i><span>Settings</span>
-    </a>
-  </footer>
+  <!-- Bottom navigation removed; sidebar (hamburger menu) handles navigation. -->
 
   <!-- Persistent site footer (links + AdSense disclosure; always visible) -->
   <div class="legal-footer" role="contentinfo" aria-label="Site footer">
@@ -1135,7 +1168,6 @@
       const sidebar = document.querySelector('.sidebar');
       const overlay = document.getElementById('overlay');
       const navItems = document.querySelectorAll('.sidebar .nav-item');
-      const footerNavItems = document.querySelectorAll('footer .footer-nav-item');
       const sections = document.querySelectorAll('.section');
 
       const qrReaderDiv = document.getElementById('qr-reader');
@@ -1189,30 +1221,41 @@
       });
       overlay.addEventListener('click', closeSidebar);
 
+      // --- Auto-reset timer (cleared when user navigates away) ---
+      let pendingAutoResetTimer = null;
+      function cancelPendingAutoReset() {
+        if (pendingAutoResetTimer) {
+          clearTimeout(pendingAutoResetTimer);
+          pendingAutoResetTimer = null;
+        }
+      }
+
       // --- Navigation ---
       function switchSection(targetId) {
         sections.forEach(s => s.classList.remove('active'));
         document.getElementById(targetId).classList.add('active');
 
-        [...navItems, ...footerNavItems].forEach(item => {
+        navItems.forEach(item => {
           item.classList.toggle('active', item.dataset.section === targetId);
         });
 
         closeSidebar();
 
         if (targetId === 'scanner-section') {
+          // Clear any prior result so the live feed shows again
+          cancelPendingAutoReset();
+          scanResultDiv.classList.add('scanning');
+          scanResultDiv.innerHTML = '';
+          scanResultDiv.textContent = 'Point camera at a QR code…';
           startLiveScanner();
         } else {
+          cancelPendingAutoReset();
           stopScanner();
         }
         if (targetId === 'history-section') renderHistory();
       }
 
       navItems.forEach(item => item.addEventListener('click', e => {
-        e.preventDefault();
-        switchSection(e.currentTarget.dataset.section);
-      }));
-      footerNavItems.forEach(item => item.addEventListener('click', e => {
         e.preventDefault();
         switchSection(e.currentTarget.dataset.section);
       }));
@@ -1250,7 +1293,8 @@
         document.body.removeChild(ta);
       }
 
-      function makeResultEl(decodedText, isUrl) {
+      function makeResultEl(decodedText, isUrl, options) {
+        const opts = options || {};
         const wrap = document.createElement('div');
         wrap.className = 'scan-result-card ' + (isUrl ? 'is-link' : 'is-text');
 
@@ -1300,24 +1344,95 @@
         });
         wrap.appendChild(copyBtn);
 
+        // "Scan Again" action — caller passes a callback that resets the UI
+        if (typeof opts.onScanAgain === 'function') {
+          const actions = document.createElement('div');
+          actions.className = 'scan-result-actions';
+
+          const againBtn = document.createElement('button');
+          againBtn.type = 'button';
+          againBtn.className = 'btn btn-primary scan-again-btn';
+          againBtn.innerHTML = '<i class="fas fa-redo"></i> ' + (opts.againLabel || 'Scan Again');
+          againBtn.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            opts.onScanAgain();
+          });
+          actions.appendChild(againBtn);
+          wrap.appendChild(actions);
+
+          if (opts.autoResetMs && opts.autoResetMs > 0) {
+            const note = document.createElement('div');
+            note.className = 'auto-reset-note';
+            let remaining = Math.round(opts.autoResetMs / 1000);
+            note.textContent = 'Auto-reset in ' + remaining + 's…';
+            wrap.appendChild(note);
+
+            const tick = setInterval(() => {
+              remaining -= 1;
+              if (remaining <= 0) {
+                clearInterval(tick);
+                opts.onScanAgain();
+              } else {
+                note.textContent = 'Auto-reset in ' + remaining + 's…';
+              }
+            }, 1000);
+            // Cancel auto-reset if the user clicks "Scan Again" early or starts typing in generator
+            againBtn.addEventListener('click', () => clearInterval(tick), { once: true });
+          }
+        }
+
         return wrap;
       }
+
+      // Track any pending auto-reset so we can cancel it if the user navigates away
+      // (pendingAutoResetTimer + cancelPendingAutoReset declared above switchSection)
 
       function onScanSuccess(decodedText) {
         if (soundToggle.checked) { scanSound.play().catch(() => {}); }
         if (vibrationToggle.checked && navigator.vibrate) navigator.vibrate(200);
 
+        cancelPendingAutoReset();
         scanResultDiv.classList.remove('scanning');
         imageScanResultDiv.style.display = 'block';
 
         const isUrl = (() => { try { new URL(decodedText); return true; } catch { return false; } })();
 
+        // Live camera scan — show result with "Scan Again" so the camera comes back
         if (document.getElementById('scanner-section').classList.contains('active')) {
+          const resetLiveScanner = () => {
+            cancelPendingAutoReset();
+            scanResultDiv.classList.add('scanning');
+            scanResultDiv.innerHTML = '';
+            scanResultDiv.textContent = 'Point camera at a QR code…';
+            // Restart the live camera feed
+            startLiveScanner();
+          };
+
           scanResultDiv.innerHTML = '';
-          scanResultDiv.appendChild(makeResultEl(decodedText, isUrl));
+          scanResultDiv.appendChild(makeResultEl(decodedText, isUrl, {
+            onScanAgain: resetLiveScanner,
+            againLabel: 'Scan Again',
+            autoResetMs: 8000  // auto-clear after 8s if user does nothing
+          }));
+
+          // Schedule auto-reset fallback (the inline auto-reset note also covers this)
+          pendingAutoResetTimer = setTimeout(resetLiveScanner, 8000);
         } else {
+          // Image scan — show result, "Scan Another" clears and re-triggers file picker
+          const resetImageScanner = () => {
+            cancelPendingAutoReset();
+            imageScanResultDiv.innerHTML = '';
+            imageScanResultDiv.style.display = 'none';
+            uploadInput.value = '';
+            uploadInput.click();
+          };
+
           imageScanResultDiv.innerHTML = '';
-          imageScanResultDiv.appendChild(makeResultEl(decodedText, isUrl));
+          imageScanResultDiv.appendChild(makeResultEl(decodedText, isUrl, {
+            onScanAgain: resetImageScanner,
+            againLabel: 'Scan Another Image',
+            autoResetMs: 0  // no auto-reset for image mode
+          }));
         }
 
         saveToHistory(decodedText, 'scan');
@@ -1402,24 +1517,81 @@
           return;
         }
         qrCodeHistory.forEach(item => {
+          const isUrl = (() => { try { new URL(item.text); return true; } catch { return false; } })();
+
           const li = document.createElement('li');
           li.className = 'history-item';
-          li.innerHTML = `
-            <span class="hi-type ${item.type}">
-              <i class="fas ${item.type === 'scan' ? 'fa-qrcode' : 'fa-wand-magic-sparkles'}"></i>
-              ${item.type === 'scan' ? 'Scanned' : 'Generated'}
-            </span>
-            <p>${escapeHtml(item.text)}</p>
-            <div class="timestamp">${item.timestamp}</div>
-          `;
+
+          // Header row: badge + actions (copy, open)
+          const header = document.createElement('div');
+          header.className = 'history-item-header';
+
+          const badge = document.createElement('span');
+          badge.className = 'hi-type ' + item.type;
+          badge.innerHTML = '<i class="fas ' + (item.type === 'scan' ? 'fa-qrcode' : 'fa-wand-magic-sparkles') + '"></i> ' +
+                           (item.type === 'scan' ? 'Scanned' : 'Generated');
+          header.appendChild(badge);
+
+          const actions = document.createElement('div');
+          actions.className = 'history-item-actions';
+
+          // Copy button
+          const copyBtn = document.createElement('button');
+          copyBtn.type = 'button';
+          copyBtn.className = 'history-item-copy';
+          copyBtn.title = 'Copy';
+          copyBtn.setAttribute('aria-label', 'Copy to clipboard');
+          copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+          copyBtn.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            copyTextToClipboard(item.text, copyBtn);
+          });
+          actions.appendChild(copyBtn);
+
+          // Open button (URLs only)
+          if (isUrl) {
+            const openBtn = document.createElement('a');
+            openBtn.className = 'history-item-open';
+            openBtn.href = item.text;
+            openBtn.target = '_blank';
+            openBtn.rel = 'noopener noreferrer';
+            openBtn.title = 'Open link';
+            openBtn.setAttribute('aria-label', 'Open link in new tab');
+            openBtn.innerHTML = '<i class="fas fa-external-link-alt"></i>';
+            actions.appendChild(openBtn);
+          }
+
+          header.appendChild(actions);
+          li.appendChild(header);
+
+          // Content: link or plain text
+          const content = document.createElement('div');
+          content.className = 'history-item-content';
+          if (isUrl) {
+            const a = document.createElement('a');
+            a.className = 'history-item-link';
+            a.href = item.text;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = item.text;
+            content.appendChild(a);
+          } else {
+            const span = document.createElement('span');
+            span.className = 'history-item-text';
+            span.textContent = item.text;
+            content.appendChild(span);
+          }
+          li.appendChild(content);
+
+          // Timestamp
+          const ts = document.createElement('div');
+          ts.className = 'timestamp';
+          ts.textContent = item.timestamp;
+          li.appendChild(ts);
+
           historyList.appendChild(li);
         });
-      }
-
-      function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.appendChild(document.createTextNode(text));
-        return div.innerHTML;
       }
 
       function clearHistory() {
