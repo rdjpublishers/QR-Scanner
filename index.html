@@ -857,6 +857,24 @@
     .legal-links a:hover { text-decoration: underline; }
     .legal-links .sep { color: var(--text-muted); opacity: 0.6; }
 
+    /* ===== GUIDE CONTENT (below live scanner) ===== */
+    .guide { max-width: 520px; margin: 1.25rem auto 0; }
+    .guide .card { margin-bottom: 1rem; }
+    .guide h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 1rem 0 0.3rem; }
+    .guide p, .guide li, .guide dd { font-size: 0.9rem; line-height: 1.62; color: var(--text); }
+    .guide p { margin-bottom: 0.8rem; }
+    .guide p:last-child { margin-bottom: 0; }
+    .guide ul { padding-left: 1.25rem; }
+    .guide ul li { margin-bottom: 0.5rem; }
+    .guide ul li:last-child { margin-bottom: 0; }
+    .guide ul strong { color: var(--primary); }
+    .guide dt { font-size: 0.9rem; font-weight: 600; color: var(--primary); margin-top: 0.8rem; }
+    .guide dt:first-child { margin-top: 0; }
+    .guide dd { color: var(--text-muted); margin: 0.15rem 0 0; }
+    .guide a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .guide a:hover { text-decoration: underline; }
+    .guide code { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; font-size: 0.85em; }
+
     /* ===== SCROLLBAR GLOBAL ===== */
     main::-webkit-scrollbar { width: 4px; }
     main::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
@@ -929,6 +947,100 @@
         <div class="card-title"><i class="fas fa-qrcode"></i> Live Scan</div>
         <div id="qr-reader"></div>
         <div id="scan-result" class="result-box scanning" role="status" aria-live="polite">Point camera at a QR code…</div>
+      </div>
+
+      <div class="guide">
+
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-circle-question"></i> What is QR Scanner &amp; Generator?</h2>
+          <p>QR Scanner &amp; Generator is a free tool that runs in your web browser. It does two jobs: it reads QR codes, and it creates them. You can scan a code live with your camera, or upload a photo or screenshot that contains one. You can also type a link or some text and turn it into a QR code you can download as a PNG image.</p>
+          <p>There is nothing to install and no account to make. Open the page on your phone or computer and it works. Every scan and every code you create is also saved to the History page on your own device, so you can find it again later.</p>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-list-ol"></i> How to use it</h2>
+          <ol class="howto-list">
+            <li><strong>To scan with a camera:</strong> Stay on Live Scanner and allow camera access when your browser asks. Hold the code inside the frame and keep steady. The result appears as soon as the code is read.</li>
+            <li><strong>To scan from a picture:</strong> Open the menu (top left), choose Scan from Image, then select a photo or screenshot, or drop one onto the page.</li>
+            <li><strong>To create a code:</strong> Choose Create QR Code, type or paste your link or text, and tap Generate QR Code. Download it as a PNG to print or share.</li>
+            <li><strong>To look back:</strong> Choose History to see earlier scans and codes. Each entry has a copy button, and links also have an open button.</li>
+            <li><strong>To change settings:</strong> Open Settings to switch to dark theme, choose the front or back camera, and turn sound or vibration on or off.</li>
+          </ol>
+          <p style="margin-top:0.8rem;">If the result is a web address, it appears as a link you can tap to open. Read the address first before you open it.</p>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-lightbulb"></i> Common use cases</h2>
+          <ul>
+            <li><strong>Check a link before opening it.</strong> Scan a code on a poster or flyer and read the full address first.</li>
+            <li><strong>Read a QR code from a screenshot.</strong> If someone sends you a code in a chat, upload the image instead of trying to scan another screen.</li>
+            <li><strong>Share your website.</strong> Turn your page address into a code for business cards, menus, or shop windows.</li>
+            <li><strong>Share Wi-Fi with guests.</strong> Create a code so visitors can join without typing a long password.</li>
+            <li><strong>Share contact details.</strong> Encode a phone number, an email address, or a contact card.</li>
+            <li><strong>Label things at home or work.</strong> Put a note, a shelf list, or a box description behind a code and stick it on.</li>
+            <li><strong>Event and class handouts.</strong> Link to a schedule, a form, or a shared document on printed material.</li>
+            <li><strong>Keep a personal record.</strong> Use History to find a link you scanned earlier without hunting for the original code.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-wand-magic-sparkles"></i> Tips for better results</h2>
+          <ul>
+            <li>Use good, even light. Avoid glare and hard shadows across the code.</li>
+            <li>Keep the whole code in view, including the blank margin around it. Cropped edges can stop it from reading.</li>
+            <li>Hold your phone about 15 to 30 cm away and let the camera focus before you move.</li>
+            <li>For uploads, use the original image rather than a small or heavily compressed copy.</li>
+            <li>Shorter text makes a simpler code that is easier to scan. If your link is long, use a shortened one.</li>
+            <li>When printing your own code, make it at least about 2 cm wide, keep dark ink on a light background, and test it before printing many copies.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-screwdriver-wrench"></i> Troubleshooting</h2>
+          <dl>
+            <dt>The camera does not start.</dt>
+            <dd>Check that you allowed camera access for this site in your browser settings. Close other apps that may be using the camera, then reload. The Refresh button in Settings also helps.</dd>
+            <dt>The code will not scan.</dt>
+            <dd>Move closer or farther, improve the light, and clean the camera lens. If the code is on a screen, lower the brightness a little to reduce glare.</dd>
+            <dt>My uploaded image shows no result.</dt>
+            <dd>The picture may be blurry, too small, or cropped too tightly. Try a clearer image with the full code and some space around it.</dd>
+            <dt>The wrong camera opens.</dt>
+            <dd>Go to Settings and choose Back Camera or Front Camera.</dd>
+            <dt>My generated code will not scan.</dt>
+            <dd>Check the text for typos, then try shorter input and a larger print size.</dd>
+            <dt>The result is not a link.</dt>
+            <dd>Not every code holds a web address. It may contain plain text, a phone number, or Wi-Fi details, and these are shown as text.</dd>
+          </dl>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-circle-question"></i> Frequently asked questions</h2>
+
+          <h3>1. Is this tool really free?</h3>
+          <p>Yes. There is no charge, no sign-up, and no limit on how many codes you scan or create.</p>
+
+          <h3>2. Do I need to download an app?</h3>
+          <p>No. It runs in your browser on phones, tablets, and computers.</p>
+
+          <h3>3. What can I put inside a QR code?</h3>
+          <p>Any plain text up to about 7,000 characters: links, notes, phone numbers, email addresses, contact cards, and Wi-Fi details written in the standard <code>WIFI:</code> format.</p>
+
+          <h3>4. Can I scan a QR code from a saved image?</h3>
+          <p>Yes. Use Scan from Image to upload a photo or screenshot and the tool will read the code in it.</p>
+
+          <h3>5. In what format can I download the QR code I create?</h3>
+          <p>As a PNG image, which works for print and for sharing on screens.</p>
+
+          <h3>6. Does it work offline?</h3>
+          <p>You need a connection the first time so the page and its scanning libraries can load. After that, scanning and creating codes can continue without a connection.</p>
+
+          <h3>7. Is it safe to open links I scan?</h3>
+          <p>A QR code can point to any website, so treat it like a link from a stranger. Read the address shown in the result before you open it, and be careful with stickers placed over other codes.</p>
+
+          <h3>8. How do I delete my scan history?</h3>
+          <p>Open Settings and use Clear Now, or use Clear All History on the History page.</p>
+        </div>
+
       </div>
     </section>
 
@@ -1035,48 +1147,21 @@
           <p>Fast, free &amp; privacy-friendly — no app download needed</p>
         </div>
 
-        <!-- Long description -->
+        <!-- Privacy note -->
         <div class="card" style="margin-top:0;">
-          <div class="card-title"><i class="fas fa-circle-info"></i> About this tool</div>
+          <div class="card-title"><i class="fas fa-shield-halved"></i> Privacy note</div>
           <div class="about-text">
-            <p><strong>QR Scanner &amp; Generator</strong> is a free, browser-based utility from <a href="https://rdjpublishers.com/" target="_blank" rel="noopener">RDJ Publishers</a> that lets you read and create QR codes in seconds. Use your device camera to scan a live code, upload an image to extract a hidden link, or generate a new code for any URL, plain text, phone number, email, or Wi-Fi credentials.</p>
-            <p>The scanner works straight from the bottom navigation bar — point your camera at any QR code and the decoded content appears instantly, with one-tap access for URLs. The generator accepts any string up to roughly 7,000 characters and produces a high-error-correction PNG you can download and share.</p>
-            <p><strong>Your privacy comes first.</strong> Every scan and every QR code is processed entirely inside your browser. No images, no decoded text, and no generated codes are ever uploaded to our servers. We do not log the contents of your scans, we do not store camera frames, and we do not require an account.</p>
-            <p>The tool is completely free to use, requires no sign-up, and runs on both mobile and desktop browsers. Switch to the dark theme, pick a front or back camera, and tweak sound or vibration feedback from the Settings tab.</p>
-            <p>QR Scanner &amp; Generator is built and maintained by <strong>RDJ Publishers</strong>, a small independent studio that publishes a growing collection of practical, no-nonsense web tools. Questions, bug reports, or partnership ideas? Write to us at <a href="mailto:rdjpublishers@gmail.com">rdjpublishers@gmail.com</a>.</p>
+            <p>Scanning and code creation both happen inside your browser. Camera frames, uploaded images, decoded text, and the codes you generate are not sent to our servers. Your history is stored only on your own device and you can delete it whenever you like.</p>
+            <p>Like most free sites, this page may show ads through Google AdSense, which can use cookies or device identifiers. This is described in our <a href="https://rdjpublishers.com/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>, along with opt-out information.</p>
           </div>
         </div>
 
-        <!-- How to use -->
+        <!-- About -->
         <div class="card">
-          <div class="card-title"><i class="fas fa-list-ol"></i> How to use</div>
-          <ol class="howto-list">
-            <li>Tap <strong>Scan</strong> in the bottom bar and grant camera access to read QR codes live. Hold steady until the result appears.</li>
-            <li>Tap <strong>Image</strong> to upload a photo, screenshot, or saved picture containing a QR code — we'll extract the content instantly.</li>
-            <li>Tap <strong>Create</strong> to generate a QR code from any text or URL, then download it as a PNG ready to print or share.</li>
-            <li>Tap <strong>History</strong> to revisit every code you've scanned or generated. History is stored only on this device and can be cleared any time from Settings.</li>
-          </ol>
-        </div>
-
-        <!-- FAQ -->
-        <div class="card">
-          <div class="card-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</div>
-          <details class="faq-item" open>
-            <summary>Do I need to install an app?</summary>
-            <p>No. QR Scanner &amp; Generator runs entirely in your web browser. There is nothing to download, no extension to add, and no account to create — just open the page and start scanning.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Is any of my data uploaded to a server?</summary>
-            <p>No. All scanning and generation happens locally on your device. Your camera frames, decoded text, generated codes, and history never leave your browser. See our <a href="https://rdjpublishers.com/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> for the full details.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Does it work offline?</summary>
-            <p>The first visit needs an internet connection to load the page and the scanning/generation libraries. After that, the core scanning and QR generation features continue to work without a network connection.</p>
-          </details>
-          <details class="faq-item">
-            <summary>What kinds of data can I turn into a QR code?</summary>
-            <p>Any plain string up to about 7,000 characters — URLs, plain text, phone numbers, email addresses, Wi-Fi credentials in the standard <code>WIFI:</code> format, vCard contact cards, and more. Decoded URLs also become tappable links in the result panel.</p>
-          </details>
+          <div class="card-title"><i class="fas fa-circle-info"></i> About</div>
+          <div class="about-text">
+            <p>QR Scanner &amp; Generator is made and maintained by <strong>RDJ Publishers</strong>, an independent team that builds simple, practical web tools. We keep our tools fast, free to use, and easy to understand. To report a bug or share an idea, write to <a href="mailto:rdjpublishers@gmail.com">rdjpublishers@gmail.com</a> or visit our <a href="https://rdjpublishers.com/contact.html" target="_blank" rel="noopener">Contact page</a>.</p>
+          </div>
         </div>
 
         <!-- App information (existing) -->
